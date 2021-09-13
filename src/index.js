@@ -5,11 +5,16 @@ import ReactDOM from "react-dom";
 import theme from "./utils/theme";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
+import ApiConfigContextProvider from "./contexts/ApiConfigContext";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider resetCSS theme={theme}>
-      <App />
+      <ApiConfigContextProvider>
+        <App />
+      </ApiConfigContextProvider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
