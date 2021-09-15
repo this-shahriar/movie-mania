@@ -1,6 +1,4 @@
-#Demo
-
-https://cefalo-movie-mania.netlify.app/
+## Demo : https://cefalo-movie-mania.netlify.app/
 
 In the project directory, you can run:
 
