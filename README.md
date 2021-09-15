@@ -1,4 +1,12 @@
+#Demo
+
+https://cefalo-movie-mania.netlify.app/
+
 In the project directory, you can run:
+
+### `yarn`
+
+Installs dependencies.
 
 ### `yarn start`
 
