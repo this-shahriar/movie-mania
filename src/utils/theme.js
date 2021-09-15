@@ -16,6 +16,7 @@ const theme = extendTheme({
     secondary: { 500: "#F43B86", 600: "#F43B86" },
     back: { 500: "#F8F0DF", 600: "#F8F0DF" },
     text: { 500: "#FFEF78", 600: "#FFEF78" },
+    dark: { 500: "#141414" },
   },
   breakpoints,
 });

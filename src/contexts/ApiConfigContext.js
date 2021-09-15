@@ -2,7 +2,6 @@ import { apiList } from "../utils/api-list";
 import { getData } from "../utils/api-service";
 import { createContext, useEffect, useState } from "react";
 import { useToast } from "@chakra-ui/toast";
-import { useBreakpointValue } from "@chakra-ui/media-query";
 
 export const ApiConfigContext = createContext({});
 

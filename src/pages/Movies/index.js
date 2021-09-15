@@ -1,12 +1,15 @@
 import { useHistory } from "react-router";
 import { Spinner } from "@chakra-ui/spinner";
 import { useContext, useEffect } from "react";
-import { Divider, Flex, Text } from "@chakra-ui/layout";
+import { Divider, Flex, Grid, Text } from "@chakra-ui/layout";
 import MovieGallery from "../../components/MovieGallery";
 import { GenreContext } from "../../contexts/GenreContext";
+import { RecentlyVisitedContext } from "../../contexts/VisitedContext";
+import MovieItem from "../../components/MovieItem";
 
 const Movies = () => {
   const router = useHistory();
+  const { recently } = useContext(RecentlyVisitedContext);
   const { genres, popularList, getGenreList, getPopularList } =
     useContext(GenreContext);
 
@@ -17,11 +20,31 @@ const Movies = () => {
 
   return (
     <Flex w="100vw" overflow="hidden" direction="column">
-      <Flex direction="column">
-        {popularList && popularList.length > 0 && (
-          <MovieGallery list={popularList.slice(0, 5)} />
-        )}
-      </Flex>
+      {popularList?.length > 0 && (
+        <Flex pt="2rem" w="100%" direction="column">
+          <Flex p="1rem" justify="center" flexWrap="wrap">
+            {popularList.slice(0, 5).map((mov) => (
+              <MovieItem dark item={mov} w={{ base: "100vw", sm: "14rem" }} />
+            ))}
+          </Flex>
+        </Flex>
+      )}
+      {recently?.length > 0 && (
+        <Flex pt="2rem" w="100%" direction="column">
+          <Flex align="center">
+            <Divider borderColor="text.500" />
+            <Text color="text.500" whiteSpace="nowrap" p="0 1rem">
+              Recently visited movies
+            </Text>
+            <Divider borderColor="text.500" />
+          </Flex>
+          <Flex p="1rem" justify="center" flexWrap="wrap">
+            {recently.slice(0, 5).map((mov) => (
+              <MovieItem dark item={mov} w={{ base: "100vw", sm: "14rem" }} />
+            ))}
+          </Flex>
+        </Flex>
+      )}
       <Flex align="center" p="2rem 0 1rem 0">
         <Divider />
         <Text
@@ -50,7 +73,7 @@ const Movies = () => {
                 flexBasis={{ base: "1", sm: 0 }}
                 _hover={{ transform: "scale(1.04)" }}
                 p={{ base: "0.8rem 1.6rem", sm: "1rem 2rem" }}
-                onClick={() => router?.push(`/genres/${item.id}`)}
+                onClick={() => router?.push(`/genres/${item.id}/${item.name}`)}
                 background="linear-gradient(180deg, rgba(32,60,92,1) 0%, rgba(17,32,49,1) 75%)"
               >
                 <Text fontWeight="bold" whiteSpace="nowrap" color="text.500">
