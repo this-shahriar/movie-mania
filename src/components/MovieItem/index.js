@@ -9,7 +9,7 @@ import { ApiConfigContext } from "../../contexts/ApiConfigContext";
 import { WatchListContext } from "../../contexts/WatchListContext";
 import WatchListBtn from "../WatchlistBtn";
 
-const MovieItem = ({ item, w, dark }) => {
+const MovieItem = ({ item, w, h, dark }) => {
   const router = useHistory();
   const { imageBase, posterSizes } = useContext(ApiConfigContext);
   const { setWatchList, watchList } = useContext(WatchListContext);
@@ -17,16 +17,17 @@ const MovieItem = ({ item, w, dark }) => {
   return (
     <Flex
       w={w}
+      h={h}
+      mb="2rem"
       align="center"
       cursor="pointer"
       direction="column"
       position="relative"
-      h={w ? "min-content" : "100%"}
       _hover={{ transform: "scale(1.01)", transition: "all linear 0.05s" }}
     >
       <Flex
         top="1rem"
-        left="0.5rem"
+        left="1rem"
         align="center"
         p="0.1rem 0.8rem"
         bg="secondary.500"
@@ -48,8 +49,9 @@ const MovieItem = ({ item, w, dark }) => {
         onClick={() => router?.push(`/movies/${item.id}`)}
         src={imageBase + posterSizes[5] + item.poster_path}
       />
-      <Flex minH="5rem" pt="1rem" direction="column">
+      <Flex minH="5rem" p="1rem 0" direction="column">
         <Text
+          p="0.5rem"
           fontWeight="800"
           color="text.500"
           fontSize="1.1rem"
@@ -58,7 +60,7 @@ const MovieItem = ({ item, w, dark }) => {
           {item.title}
         </Text>
 
-        <Text pb="1rem" color="back.500" fontSize="0.9rem" textAlign="center">
+        <Text pb="2rem" color="back.500" fontSize="0.9rem" textAlign="center">
           {item.release_date}
         </Text>
       </Flex>

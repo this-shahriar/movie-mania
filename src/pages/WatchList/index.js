@@ -1,18 +1,26 @@
 import { useContext } from "react";
-import { Image } from "@chakra-ui/image";
-import { useHistory } from "react-router";
-import { Button } from "@chakra-ui/button";
-import fallbackimg from "../../assets/fallback.gif";
-import { Flex, Grid, GridItem, Text } from "@chakra-ui/layout";
+import { Flex, Text } from "@chakra-ui/layout";
 import { WatchListContext } from "../../contexts/WatchListContext";
-import { ApiConfigContext } from "../../contexts/ApiConfigContext";
-import MovieGrid from "../../components/MovieGrid";
+import MovieItem from "../../components/MovieItem";
 
 const WatchList = () => {
-  const { watchList, setWatchList } = useContext(WatchListContext);
+  const { watchList } = useContext(WatchListContext);
 
   return watchList?.length > 0 ? (
-    <MovieGrid list={watchList} setList={setWatchList} />
+    <Flex pt="2rem" w="100vw" maxW="1920px" direction="column">
+      <Flex p="1rem" justify="center" flexWrap="wrap">
+        {watchList.map((mov, idx) => (
+          <Flex key={idx} direction="column">
+            <MovieItem
+              dark
+              item={mov}
+              w={{ base: "100vw", sm: "14rem" }}
+              h={{ base: "30rem", sm: "22rem" }}
+            />
+          </Flex>
+        ))}
+      </Flex>
+    </Flex>
   ) : (
     <Text p="6rem 0" color="text.500">
       No movie added

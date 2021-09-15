@@ -24,7 +24,12 @@ const Movies = () => {
         <Flex pt="2rem" w="100%" direction="column">
           <Flex p="1rem" justify="center" flexWrap="wrap">
             {popularList.slice(0, 5).map((mov) => (
-              <MovieItem dark item={mov} w={{ base: "100vw", sm: "14rem" }} />
+              <MovieItem
+                dark
+                item={mov}
+                w={{ base: "100vw", sm: "16rem" }}
+                h="30rem"
+              />
             ))}
           </Flex>
         </Flex>
@@ -40,7 +45,12 @@ const Movies = () => {
           </Flex>
           <Flex p="1rem" justify="center" flexWrap="wrap">
             {recently.slice(0, 5).map((mov) => (
-              <MovieItem dark item={mov} w={{ base: "100vw", sm: "14rem" }} />
+              <MovieItem
+                dark
+                item={mov}
+                w={{ base: "100vw", sm: "14rem" }}
+                h={{ base: "30rem", sm: "22rem" }}
+              />
             ))}
           </Flex>
         </Flex>
