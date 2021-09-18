@@ -25,6 +25,7 @@ const WatchListBtn = ({ variant, item, dark }) => {
           : "primary"
       }
       variant={variant}
+      data-testid="watchlist-btn"
     >
       {watchList?.map((wl) => wl.id).includes(item.id)
         ? "Remove from watchlist"

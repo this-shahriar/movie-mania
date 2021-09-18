@@ -41,7 +41,7 @@ const MovieGallery = ({ list }) => {
   };
 
   return (
-    <Slider beforeChange={(e) => setCurrent(e)} {...sliderConfig}>
+    <Slider {...sliderConfig} beforeChange={(e) => setCurrent(e)}>
       {list.map((item, idx) => (
         <Flex
           mb="2rem"

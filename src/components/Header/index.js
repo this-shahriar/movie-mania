@@ -12,12 +12,13 @@ const Header = () => {
 
   return (
     <Flex
-      p="0 1rem"
-      align="center"
-      justify="space-between"
       w="100%"
       h="4rem"
+      p="0 1rem"
+      align="center"
       bg="primary.500"
+      justify="space-between"
+      data-testid="header-body"
     >
       <Image
         h="5rem"
@@ -28,6 +29,7 @@ const Header = () => {
       <Button
         variant="link"
         colorScheme="text"
+        data-testid="header-btn"
         onClick={() => router?.push("/watchlist")}
       >
         Watchlist ({watchList?.length || 0})

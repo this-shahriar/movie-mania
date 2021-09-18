@@ -23,6 +23,7 @@ const MovieItem = ({ item, w, h, dark }) => {
       cursor="pointer"
       direction="column"
       position="relative"
+      data-testid="movie-item-body"
       _hover={{ transform: "scale(1.01)", transition: "all linear 0.05s" }}
     >
       <Flex
@@ -36,19 +37,21 @@ const MovieItem = ({ item, w, h, dark }) => {
       >
         <StarIcon fontSize="0.6rem" color="back.500" />
         <Text pl="0.2rem" fontWeight="bold" fontSize="0.8rem" color="back.500">
-          {item.vote_average}
+          {item?.vote_average}
         </Text>
       </Flex>
-      <Image
-        h="100%"
-        w={w ? "80%" : ""}
-        overflow="hidden"
-        objectFit="cover"
-        borderRadius="6px"
-        fallbackSrc={fallbackimg}
-        onClick={() => router?.push(`/movies/${item.id}`)}
-        src={imageBase + posterSizes[5] + item.poster_path}
-      />
+      {posterSizes && imageBase && (
+        <Image
+          h="100%"
+          w={w ? "80%" : ""}
+          overflow="hidden"
+          objectFit="cover"
+          borderRadius="6px"
+          fallbackSrc={fallbackimg}
+          onClick={() => router?.push(`/movies/${item?.id}`)}
+          src={imageBase + posterSizes[5] + item?.poster_path}
+        />
+      )}
       <Flex minH="5rem" p="1rem 0" direction="column">
         <Text
           p="0.5rem"
@@ -57,11 +60,11 @@ const MovieItem = ({ item, w, h, dark }) => {
           fontSize="1.1rem"
           textAlign="center"
         >
-          {item.title}
+          {item?.title}
         </Text>
 
         <Text pb="2rem" color="back.500" fontSize="0.9rem" textAlign="center">
-          {item.release_date}
+          {item?.release_date}
         </Text>
       </Flex>
       {w && <WatchListBtn variant="link" item={item} dark={dark} />}
